@@ -25,14 +25,15 @@ class FilesController extends Controller
      */
     public function store(Request $request)
     {
-        $file = new File();
-        $file->name = $request->username;
-        $file->code = $request->code;
-        $file->public = $request->public;
-        $file->description = $request->description;
-        $file->id_user = $request->id_user;
-        
-        return ["result"=>$file->save()];
+        if (UsersController::auth()) {
+            $file = new Files();
+            $file->name = $request->username;
+            $file->code = $request->code;
+            $file->public = $request->public;
+            $file->description = $request->description;
+            $file->id_user = $request->id_user;
+            return ["result" => $file->save()];
+        } else return ["result" => -1];
     }
 
     /**
@@ -53,16 +54,17 @@ class FilesController extends Controller
      * @param  \App\Models\files  $files
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, files $files)
+    public function update(Request $request, $id)
     {
-        $file = File::find($id);
-        $file->name = $request->username;
-        $file->code = $request->code;
-        $file->public = $request->public;
-        $file->description = $request->description;
-        $file->id_user = $request->id_user;
-        
-        return ["result"=>$file->save()];
+        if (UsersController::auth()) {
+            $file = Files::find($id);
+            $file->name = $request->username;
+            $file->code = $request->code;
+            $file->public = $request->public;
+            $file->description = $request->description;
+            $file->id_user = $request->id_user;
+            return ["result" => $file->save()];
+        } else return ["result" => -1];
     }
 
     /**
@@ -71,8 +73,10 @@ class FilesController extends Controller
      * @param  \App\Models\files  $files
      * @return \Illuminate\Http\Response
      */
-    public function destroy(files $files)
+    public function destroy($id)
     {
-       File::find($id)->delete();
+        if (UsersController::auth()) {
+            Files::find($id)->delete();
+        } else return ["result" => -1];
     }
 }

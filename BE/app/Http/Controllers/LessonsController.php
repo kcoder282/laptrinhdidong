@@ -25,15 +25,15 @@ class LessonsController extends Controller
      */
     public function store(Request $request)
     {
-        $lesson = new Lesson();
-        $lesson->name = $request->lessonname;
-        $lesson->img = $request->img;
-        $lesson->content = $request->content;
-        $lesson->view = $request->view;
-      
-        $lesson->id_user = $request->id_user;
-       
-        return ["result"=>$lesson->save()];
+        if (UsersController::auth()) {  
+            $lesson = new Lessons();
+            $lesson->name = $request->lessonname;
+            $lesson->img = $request->img;
+            $lesson->content = $request->content;
+            $lesson->view = $request->view;
+            $lesson->id_user = $request->id_user;
+            return ["result"=>$lesson->save()];
+        }else return ["result"=> -1];
     }
 
     /**
@@ -56,15 +56,15 @@ class LessonsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $lesson = Lesson::find($id);
-         $lesson->name = $request->lessonname;
-        $lesson->img = $request->img;
-        $lesson->content = $request->content;
-        $lesson->view = $request->view;
-      
-        $lesson->id_user = $request->id_user;
-       
-        return ["result"=>$lesson->save()];
+        if (UsersController::auth()) {  
+            $lesson = Lessons::find($id);
+            $lesson->name = $request->lessonname;
+            $lesson->img = $request->img;
+            $lesson->content = $request->content;
+            $lesson->view = $request->view; 
+            $lesson->id_user = $request->id_user;
+            return ["result"=>$lesson->save()];
+        } else return ["result" => -1];
     }
 
     /**
@@ -75,6 +75,8 @@ class LessonsController extends Controller
      */
     public function destroy($id)
     {
-         Lesson::find($id)->delete();
+        if (UsersController::auth()) {  
+            Lessons::find($id)->delete();
+        } else return ["result" => -1];
     }
 }

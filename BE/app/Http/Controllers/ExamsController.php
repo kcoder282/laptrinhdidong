@@ -25,16 +25,18 @@ class ExamsController extends Controller
      */
     public function store(Request $request)
     {
-        $exam = new Exam();
-        $exam->question = $request->question;
-        $exam->option1 = $request->option1;
-        $exam->option2 = $request->option2;
-        $exam->option3 = $request->option3;
-        $exam->option4 = $request->option4;
-        $exam->exactly = $request->exactly;
-        $exam->id_user = $request->id_user;
-        $exam->id_type = $request->id_type;
-        return ["result"=>$exam->save()];
+        if (UsersController::auth()) {
+            $exam = new Exams();
+            $exam->question = $request->question;
+            $exam->option1 = $request->option1;
+            $exam->option2 = $request->option2;
+            $exam->option3 = $request->option3;
+            $exam->option4 = $request->option4;
+            $exam->exactly = $request->exactly;
+            $exam->id_user = $request->id_user;
+            $exam->id_type = $request->id_type;
+            return ["result" => $exam->save()];
+        } else return ["result" => -1];
     }
 
     /**
@@ -43,7 +45,7 @@ class ExamsController extends Controller
      * @param  \App\Models\exams  $exams
      * @return \Illuminate\Http\Response
      */
-    public function show(exams $exams)
+    public function show($id)
     {
         //
     }
@@ -55,19 +57,20 @@ class ExamsController extends Controller
      * @param  \App\Models\exams  $exams
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, exams $exams)
+    public function update(Request $request, $id)
     {
-        $exam = Exam::find($id);
-        $exam->question = $request->question;
-        $exam->option1 = $request->option1;
-        $exam->option2 = $request->option2;
-        $exam->option3 = $request->option3;
-        $exam->option4 = $request->option4;
-        $exam->exactly = $request->exactly;
-        $exam->id_user = $request->id_user;
-        $exam->id_type = $request->id_type;
-        return ["result"=>$exam->save()];
-
+        if (UsersController::auth()) {
+            $exam = Exams::find($id);
+            $exam->question = $request->question;
+            $exam->option1 = $request->option1;
+            $exam->option2 = $request->option2;
+            $exam->option3 = $request->option3;
+            $exam->option4 = $request->option4;
+            $exam->exactly = $request->exactly;
+            $exam->id_user = $request->id_user;
+            $exam->id_type = $request->id_type;
+            return ["result" => $exam->save()];
+        } else return ["result" => -1];
     }
 
     /**
@@ -76,8 +79,10 @@ class ExamsController extends Controller
      * @param  \App\Models\exams  $exams
      * @return \Illuminate\Http\Response
      */
-    public function destroy(exams $exams)
+    public function destroy($id)
     {
-       Exam::find($id)->delete();
+        if (UsersController::auth()) {
+            Exams::find($id)->delete();
+        } else return ["result" => -1];
     }
 }

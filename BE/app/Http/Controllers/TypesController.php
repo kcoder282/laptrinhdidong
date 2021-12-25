@@ -26,15 +26,13 @@ class TypesController extends Controller
      */
     public function store(Request $request)
     {
-        if (UsersController::auth()) {
-            
-            $type = new Type();
+        if (UsersController::auth()) {    
+            $type = new Types();
             $type->name = $request->typename;
-            
             return ["result"=>$type->save()];
         }
         else
-            return ["result"=>-1];
+            return ["result"=> -1];
     }
 
     /**
@@ -43,7 +41,7 @@ class TypesController extends Controller
      * @param  \App\Models\types  $types
      * @return \Illuminate\Http\Response
      */
-    public function show(types $types)
+    public function show($id)
     {
         //
     }
@@ -55,12 +53,13 @@ class TypesController extends Controller
      * @param  \App\Models\types  $types
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, types $types)
+    public function update(Request $request, $id)
     {
-        $type = Type::find($id);
-        $type->name = $request->typename;
-        
-        return ["result" => $type->save()];
+        if (UsersController::auth()) {
+            $type = Types::find($id);
+            $type->name = $request->typename;
+            return ["result" => $type->save()];
+        }else return ["result" => -1];
     }
 
     /**
@@ -69,8 +68,10 @@ class TypesController extends Controller
      * @param  \App\Models\types  $types
      * @return \Illuminate\Http\Response
      */
-    public function destroy(types $types)
+    public function destroy($id)
     {
-         Type::find($id)->delete();
+        if (UsersController::auth()) {
+            Types::find($id)->delete();
+        }else return ['result'=>-1];
     }
 }
