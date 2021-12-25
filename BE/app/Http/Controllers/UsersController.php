@@ -89,7 +89,7 @@ class UsersController extends Controller
     {
 
     }
-    public function auth()
+    public static function auth()
     {
         return true;
     }
