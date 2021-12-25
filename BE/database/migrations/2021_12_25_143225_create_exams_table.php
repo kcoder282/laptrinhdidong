@@ -20,7 +20,7 @@ class CreateExamsTable extends Migration
             $table->string('option2');
             $table->string('option3');
             $table->string('option4');
-            $table->tinyint('exactly');
+            $table->tinyInteger('exactly');
             $table->bigInteger("id_lesson")->unsigned();
             $table->foreign("id_lesson")->references("id")->on("lessons")->cascadeOnDelete();
             $table->timestamps();

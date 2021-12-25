@@ -21,12 +21,8 @@ class CreateLessonsTable extends Migration
             $table->integer("view")->default(0);
             $table->bigInteger("id_user")->unsigned();
             $table->foreign("id_user")->references("id")->on("users")->cascadeOnDelete();
-
-
             $table->bigInteger("id_type")->unsigned();
             $table->foreign("id_type")->references("id")->on("types")->cascadeOnDelete();
-
-
             $table->timestamps();
         });
     }
