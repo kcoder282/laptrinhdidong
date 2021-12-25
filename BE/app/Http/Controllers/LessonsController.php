@@ -25,7 +25,15 @@ class LessonsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lesson = new Lesson();
+        $lesson->name = $request->lessonname;
+        $lesson->img = $request->img;
+        $lesson->content = $request->content;
+        $lesson->view = $request->view;
+      
+        $lesson->id_user = $request->id_user;
+       
+        return ["result"=>$lesson->save()];
     }
 
     /**
@@ -48,7 +56,15 @@ class LessonsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $lesson = Lesson::find($id);
+         $lesson->name = $request->lessonname;
+        $lesson->img = $request->img;
+        $lesson->content = $request->content;
+        $lesson->view = $request->view;
+      
+        $lesson->id_user = $request->id_user;
+       
+        return ["result"=>$lesson->save()];
     }
 
     /**
@@ -59,6 +75,6 @@ class LessonsController extends Controller
      */
     public function destroy($id)
     {
-        //
+         Lesson::find($id)->delete();
     }
 }

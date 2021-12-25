@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\LessonsController;
+use App\Http\Controllers\ExamsController;
+use App\Http\Controllers\FilesController;
+use App\Http\Controllers\TypesController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('/auth', UsersController::class);
 Route::post('/login', [UsersController::class,'Login']);
 Route::apiResource('/lessons', LessonsController::class);
+Route::apiResource('/exams', ExamsController::class);
+Route::apiResource('/files', FilesController::class);
+Route::apiResource('/types', TypesController::class);
