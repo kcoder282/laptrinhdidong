@@ -26,10 +26,15 @@ class TypesController extends Controller
      */
     public function store(Request $request)
     {
-        $type = new Type();
-        $type->name = $request->typename;
-        
-        return ["result"=>$type->save()];
+        if (UsersController::auth()) {
+            
+            $type = new Type();
+            $type->name = $request->typename;
+            
+            return ["result"=>$type->save()];
+        }
+        else
+            return ["result"=>-1];
     }
 
     /**
