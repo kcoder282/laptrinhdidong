@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class UsersController extends Controller
 {
@@ -15,7 +16,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        
+        if (isset($_REQUEST["key"])) {
+            $user = User::where("remember_token", $_REQUEST["key"])->first();
+            if($user) return $user;
+            else return ["id" => -1];
+        } else ["id" => -1];
     }
 
     /**
@@ -33,7 +38,7 @@ class UsersController extends Controller
         $user->password = bcrypt($request->password);
         $user->bird = $request->bird;
         $user->sex = $request->sex;
-        return ["result"=>$user->save()];
+        return $user->save();
     }
 
     /**
@@ -44,7 +49,7 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,14 +61,21 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = User::find($id);
-        $user->name = $request->username;
-        $user->fullname = $request->name;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->bird = $request->bird;
-        $user->sex = $request->sex;
-        return ["result" => $user->save()];
+        if($request->key)
+        {
+            $user = User::find($id);
+            if($user->remember_token === $request->key)
+            {
+                $user->name = $request->username;
+                $user->fullname = $request->name;
+                $user->email = $request->email;
+                $user->password = bcrypt($request->password);
+                $user->bird = $request->bird;
+                $user->sex = $request->sex;
+                return $user->save();
+            }else return 0;
+            
+        }
     }
 
     /**
@@ -74,16 +86,21 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        User::find($id)->delete();
+        if(self::auth())
+            User::find($id)->delete();
+        else return 0;
     }
 
     public function Login(Request $request)
     {
         if(Auth::attempt(["name"=>$request->username, "password" => $request->password]))
         {
-            return Auth::user();
+            $user = User::find(Auth::id());
+            $user->remember_token = Str::random(30);
+            $user->save();
+            return $user;
         }
-        else return ["result"=>false];
+        else return 0;
     }
     public function Logout($id)
     {
@@ -91,6 +108,9 @@ class UsersController extends Controller
     }
     public static function auth()
     {
-        return true;
+        if(isset($_REQUEST["key"]))
+        {
+            return User::where("remember_token", $_REQUEST["key"])->first();
+        }else false;
     }
 }

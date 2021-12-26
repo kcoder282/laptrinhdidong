@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\lessons;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class LessonsController extends Controller
 {
@@ -14,7 +16,7 @@ class LessonsController extends Controller
      */
     public function index()
     {
-        //
+        return lessons::all();
     }
 
     /**
@@ -25,15 +27,26 @@ class LessonsController extends Controller
      */
     public function store(Request $request)
     {
-        if (UsersController::auth()) {  
-            $lesson = new Lessons();
-            $lesson->name = $request->lessonname;
-            $lesson->img = $request->img;
-            $lesson->content = $request->content;
-            $lesson->view = $request->view;
-            $lesson->id_user = $request->id_user;
-            return ["result"=>$lesson->save()];
-        }else return ["result"=> -1];
+        $user = UsersController::auth();
+        if ($user) {  
+            $lesson = new lessons();
+            $lesson->name = $request->name;
+            $lesson->id_type = $request->id_type;
+            $lesson->id_user = $user->id;
+            $img = str_replace("public/", "", $request->file("img")->store("public/lessons"));
+            $lesson->img = $img;
+            $name = Str::random(20).".json";
+            Storage::put("public/lessons/$name", json_encode(["data" => $request->content]));
+            $lesson->content = $name;
+            if($lesson->save()){
+                return true;
+            }else
+            {
+                Storage::delete($img);
+                Storage::delete("public/lessons/$name");
+                return false;
+            }
+        }else return false;
     }
 
     /**
@@ -44,7 +57,9 @@ class LessonsController extends Controller
      */
     public function show($id)
     {
-        //
+        $lesson = lessons::find($id);
+        $lesson->content = json_decode(Storage::get('public/lessons/'.$lesson->content))->data;
+        return $lesson;
     }
 
     /**
@@ -56,15 +71,25 @@ class LessonsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (UsersController::auth()) {  
-            $lesson = Lessons::find($id);
-            $lesson->name = $request->lessonname;
-            $lesson->img = $request->img;
-            $lesson->content = $request->content;
-            $lesson->view = $request->view; 
-            $lesson->id_user = $request->id_user;
-            return ["result"=>$lesson->save()];
-        } else return ["result" => -1];
+        $user = UsersController::auth();
+        if ($user) {
+            $lesson = lessons::find($id);
+            $lesson->name = $request->name?? $lesson->name;
+            $lesson->id_type = $request->id_type?? $lesson->id_type;
+            $lesson->id_user = $user->id;
+            if($request->hasFile("img"))
+            {
+                Storage::delete('public/'.$lesson->img);
+                $img = str_replace("public/", "", $request->file("img")->store("public/lessons"));
+                $lesson->img = $img;
+            }
+            if($request->content)
+            {
+                $name = $lesson->content;
+                Storage::put("public/lessons/$name", json_encode(["data" => $request->content]));
+            }
+            return $lesson->save();
+        } else return false;
     }
 
     /**
@@ -76,7 +101,7 @@ class LessonsController extends Controller
     public function destroy($id)
     {
         if (UsersController::auth()) {  
-            Lessons::find($id)->delete();
-        } else return ["result" => -1];
+            return lessons::find($id)->delete();
+        } else return 0;
     }
 }

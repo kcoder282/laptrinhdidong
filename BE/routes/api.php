@@ -28,3 +28,4 @@ Route::apiResource('/lessons', LessonsController::class);
 Route::apiResource('/exams', ExamsController::class);
 Route::apiResource('/files', FilesController::class);
 Route::apiResource('/types', TypesController::class);
+Route::post('/answer', [ExamsController::class, 'answer']);
