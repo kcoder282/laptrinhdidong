@@ -1,4 +1,6 @@
-package com.agu.learnc.Model;
+package com.agu.learnc.App.Model;
+
+import java.util.Date;
 
 public class User {
     private int id;

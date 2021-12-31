@@ -3,32 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/animation.xml" value="0.225" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/backgroud_ic_active.xml" value="0.3148148148148148" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/background_search.xml" value="0.22447916666666667" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/boder.xml" value="0.3880208333333333" />
         <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/btn_login.xml" value="0.3880208333333333" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/btn_primary.xml" value="0.22447916666666667" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/btn_primary_pill.xml" value="0.22447916666666667" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/form_input.xml" value="0.3880208333333333" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/head_main.xml" value="0.22447916666666667" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_arrow_drop.xml" value="0.22552083333333334" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_arrow_drop_up.xml" value="0.3880208333333333" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_code.xml" value="0.3148148148148148" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_home.xml" value="0.3148148148148148" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_home_nomal.xml" value="0.3148148148148148" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_home_normal.xml" value="0.3148148148148148" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_lesson.xml" value="0.3148148148148148" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_physics.xml" value="0.22447916666666667" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_search.xml" value="0.22447916666666667" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_user.xml" value="0.3148148148148148" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/load.xml" value="0.225" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/menu_main.xml" value="0.36302083333333335" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/layout/activity_main.xml" value="0.39468503937007876" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/layout/fm_user_infor.xml" value="0.371875" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/layout/fm_user_manage.xml" value="0.33" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/layout/fragment_user_manager.xml" value="0.3578125" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3148148148148148" />
-        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3880208333333333" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/btn_primary.xml" value="0.3880208333333333" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_arrow_drop_down.xml" value="0.3880208333333333" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_code.xml" value="0.3880208333333333" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_home.xml" value="0.3880208333333333" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_lesson.xml" value="0.3880208333333333" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_lock.xml" value="0.3880208333333333" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_physics.xml" value="0.3880208333333333" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/ic_user.xml" value="0.3880208333333333" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/input.xml" value="0.3880208333333333" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/menu_footer.xml" value="0.2916666666666667" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/menu_header.xml" value="0.75" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/drawable/view_result.xml" value="0.3880208333333333" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/layout/activity_main.xml" value="0.371875" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/layout/fm_code.xml" value="0.371875" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/layout/fm_info.xml" value="0.33" />
+        <entry key="..\:/workstation/LapTrinhDiDong/LearnC/app/src/main/res/layout/fm_login.xml" value="0.371875" />
       </map>
     </option>
   </component>

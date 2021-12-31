@@ -1,185 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+<!--    Header bar-->
     <LinearLayout
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="30dp"
         android:layout_marginBottom="-20dp"
-        android:background="@drawable/head_main"
-        android:paddingBottom="20dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <LinearLayout
+        android:gravity="center_vertical"
+        android:background="@drawable/menu_header">
+        <TextView
+            android:onClick="changeHome"
+            android:drawableLeft="@drawable/ic_physics"
+            android:drawablePadding="3dp"
+            android:drawableTint="@color/primary"
+            android:textColor="@color/primary"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:text="LEARN C"
+            android:layout_weight="1.75"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:onClick="changeUser"
+            android:id="@+id/user_name_top"
+            android:textColor="#fff"
+            android:background="@drawable/btn_primary"
             android:gravity="center"
-            android:padding="10dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:textColor="@color/primary"
-                android:textStyle="bold"
-                android:drawableLeft="@drawable/ic_physics"
-                android:drawableTint="@color/primary"
-                android:text="LEARN"
-                android:textSize="25dp"
-                android:layout_weight="2"
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:id="@+id/name_user"
-                android:onClick="onLogin"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:padding="7dp"
-                android:text="Login"
-                android:background="@drawable/btn_primary_pill"
-                android:layout_weight="1"
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+            android:text="Log in"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
+<!--    Body -->
     <ScrollView
-        android:fillViewport="true"
+        android:id="@+id/main_content"
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <LinearLayout
-                android:paddingBottom="90dp"
-                android:id="@+id/contentMain"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </LinearLayout>
-        </LinearLayout>
     </ScrollView>
+
+<!--    Menu -->
     <LinearLayout
-        android:layout_marginTop="-80dp"
+        android:layout_marginTop="-20dp"
+        android:background="@drawable/menu_footer"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="5dp"
+        android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:paddingTop="20dp"
-        android:gravity="center"
-        android:background="@drawable/menu_main">
+        android:layout_height="wrap_content">
+<!--        Menu Home-->
         <LinearLayout
-            android:onClick="changeSelect"
+            android:onClick="changeMenu"
+            android:id="@+id/menu_home"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_width="1dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
             <ImageView
                 android:tag="icon"
-                android:id="@+id/home"
-                android:scaleType="center"
-                android:scaleX="1.3"
-                android:scaleY="1.3"
-                android:background="@color/white"
                 android:src="@drawable/ic_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 app:tint="@color/primary" />
             <TextView
-                android:id="@+id/home_text"
                 android:textColor="@color/primary"
-                android:text="Home"
+                android:tag="text"
                 android:gravity="center"
+                android:text="Home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
+<!--        Menu Lesson-->
         <LinearLayout
-            android:onClick="changeSelect"
+            android:onClick="changeMenu"
+            android:id="@+id/menu_lesson"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_width="1dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
             <ImageView
                 android:tag="icon"
-                android:id="@+id/lesson"
-                android:scaleType="center"
-                android:scaleX="1.1"
-                android:scaleY="1.1"
-                android:background="@color/white"
                 android:src="@drawable/ic_lesson"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 app:tint="@color/silver" />
             <TextView
-                android:id="@+id/lesson_text"
-                android:textColor="@color/primary"
-                android:text="Lesson"
                 android:visibility="gone"
+                android:textColor="@color/primary"
+                android:tag="text"
                 android:gravity="center"
+                android:text="Learn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
+<!--        Menu Code-->
         <LinearLayout
-            android:onClick="changeSelect"
+            android:onClick="changeMenu"
+            android:id="@+id/menu_code"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_width="1dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
             <ImageView
                 android:tag="icon"
-                android:id="@+id/code"
-                android:scaleType="center"
-                android:scaleX="1.1"
-                android:scaleY="1.1"
-                android:background="@color/white"
                 android:src="@drawable/ic_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:tint="@color/silver"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:tint="@color/silver" />
             <TextView
-                android:id="@+id/code_text"
-                android:textColor="@color/primary"
-                android:text="Code"
                 android:visibility="gone"
+                android:textColor="@color/primary"
+                android:tag="text"
                 android:gravity="center"
+                android:text="Code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
+<!--        Menu User-->
         <LinearLayout
-            android:onClick="changeSelect"
+            android:onClick="changeMenu"
+            android:id="@+id/menu_user"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_width="1dp"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
             <ImageView
                 android:tag="icon"
-                android:id="@+id/user"
-                android:scaleType="center"
-                android:scaleX="1.1"
-                android:scaleY="1.1"
-                android:background="@color/white"
                 android:src="@drawable/ic_user"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:tint="@color/silver"/>
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                app:tint="@color/silver" />
             <TextView
-                android:id="@+id/user_text"
-                android:textColor="@color/primary"
-                android:text="User"
                 android:visibility="gone"
+                android:textColor="@color/primary"
+                android:tag="text"
                 android:gravity="center"
+                android:text="User"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
-
-
     </LinearLayout>
-</androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>
